@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Tomato",
+    "Price": 4.90,
+    "Type": 0
+  },
+  {
+    "Id": 2,
+    "Name": "Computer",
+    "Price": 1550.00,
+    "Type": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Soap",
+    "Price": 2.50,
+    "Type": 2
+  }
+]
