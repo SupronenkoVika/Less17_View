@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Less17_View.Controllers
 {
     [Controller]
-    //[Route("[controller]/[action]")]
+    [Route("[controller]/[action]")]
     public class ProductController : Controller
     {
-        InventoryService Service;
-        public ProductController(InventoryService service)
+        IInventoryService Service;
+        public ProductController(IInventoryService service)
         {
             Service = service;
         }
@@ -34,11 +34,23 @@ namespace Less17_View.Controllers
             return View();
         }
 
-        [HttpPut]
-        public IActionResult UpdateProduct(int prodId, Product product)
+        public IActionResult Delete(string id)
         {
-            Service.UpdateProduct(prodId, product);
-            return Created($"Replase {product.Name}", product);
+            Service.DeleteProduct(id);
+            return RedirectToAction("GetProducts");
+        }
+
+        public IActionResult Edit(string id)
+        {
+            var product = Service.GetProduct(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product prod)
+        {
+            Service.ReplaceProduct(prod);
+            return RedirectToAction("GetProducts");
         }
     }
 }

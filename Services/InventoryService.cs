@@ -3,12 +3,16 @@ using Less17_View.Models.Domain;
 
 namespace Less17_View.Services
 {
-    public class InventoryService
+    public class InventoryService : IInventoryService
     {
         Inventory inventory;
         public InventoryService(Inventory inventory)
         {
             this.inventory = inventory;
+        }
+        public List<Product> GetAllProduct()
+        {
+            return inventory.prods;
         }
 
         public void AddProduct(Product prod)
@@ -16,16 +20,22 @@ namespace Less17_View.Services
             inventory.prods.Add(prod);
         }
 
-
-        public List<Product> GetAllProduct()
+        public void DeleteProduct(string name)
         {
-            return inventory.prods;
+            var prodIndex = inventory.prods.FindIndex(x => x.Name == name);
+            inventory.prods.RemoveAt(prodIndex);
         }
 
-        public void UpdateProduct(int prodID, Product prod)
+        public Product GetProduct(string name)
         {
-            inventory.prods[prodID] = prod;
+            return inventory.prods.Single(x => x.Name == name);
         }
+        public void ReplaceProduct(Product product)
+        {
+            var prodId = inventory.prods.FindIndex(x => x.Name == product.Name);
+            inventory.prods[prodId] = product;
+        }
+
         public decimal AllProductCost()
         {
             decimal result = 0;

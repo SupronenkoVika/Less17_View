@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSingleton<InventoryService>();
-builder.Services.AddSingleton(new Inventory("Products.json"));
+builder.Services.AddTransient<IInventoryService, InventoryService>();
+builder.Services.AddSingleton(new Inventory());
 
 
 var app = builder.Build();
