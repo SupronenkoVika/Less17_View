@@ -52,5 +52,12 @@ namespace Less17_View.Controllers
             Service.ReplaceProduct(prod);
             return RedirectToAction("GetProducts");
         }
+
+        [HttpGet]
+        public IActionResult ProductsCost()
+        {
+            var price = Service.AllProductCost();
+            return View(price);
+        }
     }
 }
