@@ -11,5 +11,6 @@ namespace Less17_View.Services
         public void ReplaceProduct(Product product);
         public decimal AllProductCost();
 
+
     }
 }

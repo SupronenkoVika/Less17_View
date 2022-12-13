@@ -1,4 +1,5 @@
-﻿using Less17_View.Models.Domain;
+﻿using Less17_View.Filters;
+using Less17_View.Models.Domain;
 using Less17_View.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace Less17_View.Controllers
 {
     [Controller]
     [Route("[controller]/[action]")]
+    [CustomExceptionFilter]
     public class ProductController : Controller
     {
         IInventoryService Service;
@@ -36,7 +38,7 @@ namespace Less17_View.Controllers
 
         public IActionResult Delete(string id)
         {
-            Service.DeleteProduct(id);
+            Service.DeleteProduct("-1");
             return RedirectToAction("GetProducts");
         }
 
