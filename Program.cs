@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddTransient<IInventoryService, InventoryService>();
-builder.Services.AddSingleton(new Inventory());
+builder.Services.AddSingleton(new Inventory("Products.json"));
 
 
 var app = builder.Build();

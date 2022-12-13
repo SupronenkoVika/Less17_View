@@ -9,9 +9,8 @@ namespace Less17_View.Filters
         {
             if (context.Exception is ArgumentOutOfRangeException)
             {
-                //context.HttpContext.Response.StatusCode = 404;
                 context.ExceptionHandled = true;
-                context.Result = new NotFoundResult();
+                context.Result = new BadRequestObjectResult("Exception. Can't delete product");
             }
         }
     }
