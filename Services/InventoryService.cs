@@ -15,9 +15,10 @@ namespace Less17_View.Services
             return inventory.prods;
         }
 
-        public void AddProduct(Product prod)
+        public void AddProduct(Product product)
         {
-            inventory.prods.Add(prod);
+            product.Id = Guid.NewGuid();
+            inventory.prods.Add(product);
         }
 
         public void DeleteProduct(string name)
@@ -26,13 +27,13 @@ namespace Less17_View.Services
             inventory.prods.RemoveAt(prodIndex);
         }
 
-        public Product GetProduct(string name)
+        public Product GetProduct(Guid id)
         {
-            return inventory.prods.Single(x => x.Name == name);
+            return inventory.prods.Single(x => x.Id == id);
         }
         public void ReplaceProduct(Product product)
         {
-            var prodId = inventory.prods.FindIndex(x => x.Name == product.Name);
+            var prodId = inventory.prods.FindIndex(x => x.Id == product.Id);
             inventory.prods[prodId] = product;
         }
 

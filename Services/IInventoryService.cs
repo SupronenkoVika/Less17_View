@@ -7,7 +7,7 @@ namespace Less17_View.Services
         public List<Product> GetAllProduct();
         public void AddProduct(Product prod);
         public void DeleteProduct(string name);
-        public Product GetProduct(string name);
+        public Product GetProduct(Guid name);
         public void ReplaceProduct(Product product);
         public decimal AllProductCost();
 

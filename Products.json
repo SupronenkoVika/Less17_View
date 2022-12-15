@@ -1,18 +1,18 @@
 ﻿[
   {
-    "Id": 1,
+    "Id": "50602aea-8b0f-4c64-ba80-e1a5fca29d6c",
     "Name": "Tomato",
     "Price": 4.90,
     "Type": 0
   },
   {
-    "Id": 2,
+    "Id": "b112a784-54ac-4a73-a683-966137305f8d",
     "Name": "Computer",
     "Price": 1550.00,
     "Type": 1
   },
   {
-    "Id": 3,
+    "Id": "8e429dff-0488-47fb-aa99-26f753a25477",
     "Name": "Soap",
     "Price": 2.50,
     "Type": 2

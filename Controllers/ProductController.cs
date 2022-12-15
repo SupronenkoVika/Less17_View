@@ -7,7 +7,6 @@ namespace Less17_View.Controllers
 {
     [Controller]
     [Route("[controller]/[action]")]
-    [CustomExceptionFilter]
     public class ProductController : Controller
     {
         IInventoryService Service;
@@ -33,16 +32,18 @@ namespace Less17_View.Controllers
         public IActionResult AddProduct(Product product)
         {
             Service.AddProduct(product);
-            return View();
+
+            return RedirectToAction("GetProducts");
         }
 
+        [CustomExceptionFilter]
         public IActionResult Delete(string id)
         {
             Service.DeleteProduct("-1");
             return RedirectToAction("GetProducts");
         }
 
-        public IActionResult Edit(string id)
+        public IActionResult Edit(Guid id)
         {
             var product = Service.GetProduct(id);
             return View(product);
